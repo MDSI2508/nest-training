@@ -6,6 +6,7 @@ import { StudentsController } from './students/students.controller';
 import { Group } from './students/entities/group.entity';
 import { Student } from './students/entities/student.entity';
 import { ConfigModule } from '@nestjs/config';
+import { University } from './students/entities/university.entity';
 
 @Module({
   imports: [
@@ -20,8 +21,9 @@ import { ConfigModule } from '@nestjs/config';
       username: process.env.DB_USERNAME,
       password: process.env.DB_PASSWORD,
       database: process.env.DB_NAME,
-      entities: [Student, Group],
-      synchronize: true,
+      entities: [Student, Group, University],
+      migrations: [__dirname + '/migrations/*.ts'],
+      synchronize: false,
     }),
     StudentsModule,
   ],

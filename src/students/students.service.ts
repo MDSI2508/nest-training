@@ -5,6 +5,7 @@ import { Repository } from 'typeorm';
 import { Student } from './entities/student.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Group } from './entities/group.entity';
+import { University } from './entities/university.entity';
 
 @Injectable()
 export class StudentsService {
@@ -14,6 +15,9 @@ export class StudentsService {
 
     @InjectRepository(Group)
     private readonly groupRepository: Repository<Group>,
+
+    @InjectRepository(University)
+    private readonly universityRepository: Repository<University>,
   ) {}
 
   async create(createStudentDto: CreateStudentDto) {

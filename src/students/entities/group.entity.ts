@@ -1,5 +1,12 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  OneToMany,
+  ManyToOne,
+} from 'typeorm';
 import { Student } from './student.entity';
+import { University } from './university.entity';
 
 @Entity()
 export class Group {
@@ -11,4 +18,9 @@ export class Group {
 
   @OneToMany(() => Student, (student) => student.group)
   students: Student[];
+
+  @ManyToOne(() => University, (university) => university.groups, {
+    onDelete: 'CASCADE',
+  })
+  university: University;
 }
