@@ -21,18 +21,24 @@ export class StudentsService {
   ) {}
 
   async create(createStudentDto: CreateStudentDto) {
-    const { firstName, lastName, age, groupId } = createStudentDto;
+    const { firstName, lastName, age, groupId, universityId } =
+      createStudentDto;
 
     const group = await this.groupRepository.findOneBy({ id: groupId });
     if (!group) {
       throw new Error('Group not found');
     }
 
+    const university = await this.universityRepository.findOneBy({
+      id: universityId,
+    });
+
     const student = this.studentRepository.create({
       firstName,
       lastName,
       age,
       group,
+      university,
     });
 
     return this.studentRepository.save(student);
@@ -40,7 +46,14 @@ export class StudentsService {
 
   async createGroup(groupName: string) {
     const group = this.groupRepository.create({ groupName });
+
     return this.groupRepository.save(group);
+  }
+
+  async createUniversity(name: string) {
+    const university = this.universityRepository.create({ name });
+
+    return this.universityRepository.save(university);
   }
 
   async findAll() {

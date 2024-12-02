@@ -3,4 +3,5 @@ export class CreateStudentDto {
   lastName: string;
   age: number;
   groupId: number;
+  universityId: number;
 }
