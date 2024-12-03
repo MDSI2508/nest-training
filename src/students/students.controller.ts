@@ -7,6 +7,7 @@ import {
   Param,
   Delete,
   UseGuards,
+  UseInterceptors,
 } from '@nestjs/common';
 import { StudentsService } from './students.service';
 import { CreateStudentDto } from './dto/create-student.dto';
@@ -14,8 +15,10 @@ import { UpdateStudentDto } from './dto/update-student.dto';
 import { CreateGroupDto } from './dto/create-group.dto';
 import { CreateUniversityDto } from './dto/create-university.dto';
 import { BodyGuard } from './guards/body.guard';
+import { TagInterceptor } from './interceptors/tag.interceptor';
 
 @Controller('students')
+@UseInterceptors(TagInterceptor)
 export class StudentsController {
   constructor(private readonly studentsService: StudentsService) {}
 
