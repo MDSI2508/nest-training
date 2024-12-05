@@ -3,10 +3,14 @@ import { StudentsModule } from './students/students.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { StudentsService } from './students/students.service';
 import { StudentsController } from './students/students.controller';
-import { Group } from './students/entities/group.entity';
+import { Group } from './groups/entities/group.entity';
 import { Student } from './students/entities/student.entity';
 import { ConfigModule } from '@nestjs/config';
 import { University } from './students/entities/university.entity';
+import { AuthModule } from './auth/auth.module';
+import { GroupsModule } from './groups/groups.module';
+import { GroupsService } from './groups/groups.service';
+import { UsersModule } from './users/users.module';
 
 @Module({
   imports: [
@@ -26,8 +30,11 @@ import { University } from './students/entities/university.entity';
       synchronize: false,
     }),
     StudentsModule,
+    AuthModule,
+    GroupsModule,
+    UsersModule,
   ],
-  providers: [StudentsService],
+  providers: [StudentsService, GroupsService],
   controllers: [StudentsController],
 })
 export class AppModule {}

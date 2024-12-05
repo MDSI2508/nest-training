@@ -4,7 +4,7 @@ import { UpdateStudentDto } from './dto/update-student.dto';
 import { Repository } from 'typeorm';
 import { Student } from './entities/student.entity';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Group } from './entities/group.entity';
+import { Group } from '../groups/entities/group.entity';
 import { University } from './entities/university.entity';
 
 @Injectable()
@@ -42,12 +42,6 @@ export class StudentsService {
     });
 
     return this.studentRepository.save(student);
-  }
-
-  async createGroup(groupName: string) {
-    const group = this.groupRepository.create({ groupName });
-
-    return this.groupRepository.save(group);
   }
 
   async createUniversity(name: string) {

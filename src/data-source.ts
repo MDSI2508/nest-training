@@ -1,7 +1,7 @@
 import { DataSource } from 'typeorm';
 import { config } from 'dotenv';
 import { University } from './students/entities/university.entity';
-import { Group } from './students/entities/group.entity';
+import { Group } from './groups/entities/group.entity';
 import { Student } from './students/entities/student.entity';
 
 config();

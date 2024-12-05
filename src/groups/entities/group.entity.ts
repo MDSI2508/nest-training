@@ -5,8 +5,8 @@ import {
   OneToMany,
   ManyToOne,
 } from 'typeorm';
-import { Student } from './student.entity';
-import { University } from './university.entity';
+import { Student } from '../../students/entities/student.entity';
+import { University } from '../../students/entities/university.entity';
 
 @Entity()
 export class Group {
