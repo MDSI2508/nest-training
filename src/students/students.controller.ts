@@ -15,7 +15,7 @@ import { UpdateStudentDto } from './dto/update-student.dto';
 import { CreateUniversityDto } from './dto/create-university.dto';
 import { BodyGuard } from '../guards/body.guard';
 import { TagInterceptor } from '../interceptors/tag.interceptor';
-import { AuthGuard } from "../guards/auth.guard";
+import { AuthGuard } from '../guards/auth.guard';
 
 @Controller('students')
 @UseInterceptors(TagInterceptor)

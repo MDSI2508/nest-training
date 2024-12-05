@@ -14,4 +14,13 @@ export class GroupsService {
 
     return this.groupRepository.save(group);
   }
+
+  async getGroupsWithStudents(groupName: string) {
+    const group = this.groupRepository.find({
+      where: { groupName },
+      relations: ['students'],
+    });
+
+    return group;
+  }
 }
